@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import Card from '../components/Card'
 import { connect } from "react-redux";
 import { constants } from "../constants";
-import { handleCardClicked} from "../store/actions/game";
+import { handleCardClicked, handleGameLoaded} from "../store/actions/game";
 
 class Game extends Component {
-
+    
+    componentDidMount() {
+        this.props.handleGameLoaded();
+    }
 
     render() {
         let { gameState, cards } = this.props.game;
@@ -32,4 +35,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {handleCardClicked})(Game);
+export default connect(mapStateToProps, {handleCardClicked, handleGameLoaded})(Game);

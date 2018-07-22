@@ -1,6 +1,7 @@
-import { NEW_GAME, GAME_WON, GAME_LOST, CARD_FLIPPED, CARD_MATCHED, CARD_MATCHING, CARD_HIDDEN, CARD_HIDING } from "../actionTypes";
+import { NEW_GAME, GAME_WON, GAME_LOST, CARD_FLIPPED, CARD_MATCHED,
+     CARD_MATCHING, CARD_HIDDEN, CARD_HIDING, TIMER_START, TIMER_TICK, TIMER_STOP } from "../actionTypes";
 import { constants } from "../../constants";
-import { cardClicked, cardMatching, cardMatched, cardHiding, cardHidden } from "../../helpers/game"
+import { cardClicked, cardMatching, cardMatched, cardHiding, cardHidden, timerTick, timerStop } from "../../helpers/game"
 
 const colors = [
     'red', 'green', 'blue', 'black', 'yellow', 'pink', 'silver', 'orange'];
@@ -26,7 +27,8 @@ function shuffle(a) {
 
 const DEFAULT_STATE = {
     cards: shuffle(boardBoxes),
-    gameState: constants.GAME_STARTED
+    gameState: constants.GAME_STARTED, 
+    timer: constants.TOTAL_TIME
 };
 
 const game = (state = DEFAULT_STATE, action) => {
@@ -34,13 +36,13 @@ const game = (state = DEFAULT_STATE, action) => {
         case NEW_GAME:
             return {
                 cards: shuffle(boardBoxes), 
-                gameState: constants.GAME_STARTED
+                gameState: constants.GAME_STARTED,
+                timer: constants.TOTAL_TIME
             }
         case GAME_LOST:
              return {...state, gameState:constants.GAME_LOST}
         case GAME_WON:
              return {...state, gameState:constants.GAME_WON}
-             //todo fix the state, it should not be here or there is no need of card dispatcher
         case CARD_FLIPPED:
              return cardClicked(state, action.data);
         case CARD_MATCHING:
@@ -51,7 +53,12 @@ const game = (state = DEFAULT_STATE, action) => {
              return cardHiding(state);
         case CARD_HIDDEN:
              return cardHidden(state);
-             
+        case TIMER_START:
+             return state;
+        case TIMER_STOP:
+             return timerStop(state);
+        case TIMER_TICK:
+             return timerTick(state);
         default:
             return state;
     }

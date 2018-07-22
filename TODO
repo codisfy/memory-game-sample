@@ -1,3 +1,10 @@
 
-Todo:
-  ☐ Item
+Memory Game:
+  ✔ Copy over the existing needed code from the one that you wrote earlier @started(18-07-21 22:00) @done(18-07-21 22:24) @lasted(24m4s)
+  ✔ Create a small action all that does is flip over the single card @started(18-07-21 22:24) @done(18-07-22 00:39) @lasted(2h15m2s)
+  ✔ Add delay to card flip @done(18-07-22 10:26)
+  ✔ fix the architecture of the app @started(18-07-22 09:10) @done(18-07-22 10:26) @lasted(1h16m41s)
+  ✔ Add a timer @started(18-07-22 10:27) @done(18-07-22 11:43) @lasted(1h16m26s)
+  ☐ Add new Game to navbar @started(18-07-22 11:43)
+  Reducers are only for keeping track of state that they will be maniputlating the state. 
+  Actions will define what should exactly happen. 

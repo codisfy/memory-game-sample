@@ -9,5 +9,6 @@ export const constants = {
     CARD_MATCHING : 12,
     CARD_HIDING : 13,
 
-    TOTAL_CARDS : 16
+    TOTAL_CARDS : 16,
+    TOTAL_TIME : 10
 }

@@ -1,4 +1,7 @@
-import { CARD_FLIPPED, CARD_MATCHING, CARD_MATCHED, CARD_HIDDEN, CARD_HIDING} from "../actionTypes";
+import { CARD_FLIPPED, CARD_MATCHING, CARD_MATCHED, CARD_HIDDEN, 
+    CARD_HIDING, TIMER_TICK, TIMER_START, TIMER_STOP, NEW_GAME} from "../actionTypes";
+
+export let timer = null;
 
 export function cardClicked(data) {
     return {
@@ -32,6 +35,16 @@ export function cardHidden() {
     }
 }
 
+export function newGame() {
+    return {
+        type: NEW_GAME
+    }
+}
+
+export const tick = () => ({ type: TIMER_TICK });
+
+
+
 export function handleCardClicked(data) {
     return dispatch => {
 
@@ -42,29 +55,32 @@ export function handleCardClicked(data) {
         setTimeout(() => {
             dispatch(cardHidden());
         }, 500)
-        // one dispactcher should check is there are cards which do not have matching color and update state
-
-
-        // let gameState = data.game.gameState;
-
-        // if (data.cardState === constants.CARD_SHOWN || data.cardState === constants.CARD_MATCHING) {
-        //     return;
-        // }
-        // let cards = mapCardState(data.game.cards, [data.id], constants.CARD_SHOWN);
-        // const showingCards = cards.filter((c) => c.cardState === constants.CARD_SHOWN);
-        // const ids = showingCards.map(c => c.id);
-
-        // if (showingCards.length === 2 &&
-        //     showingCards[0].color === showingCards[1].color) {
-        //     cards = mapCardState(cards, ids, constants.CARD_MATCHING);
-            // const matchingCards = cards.filter((c) => c.cardState === constants.CARD_MATCHING);
-            // if (matchingCards.length === 16) {
-            //     gameState = constants.GAME_WON;
-            // }
-        // } else if (showingCards.length === 2) {
-        //     cards = mapCardState(cards, ids, constants.CARD_HIDDEN);
-        // }
-
-        // dispatch(cardClicked({ cards, gameState }));
     }
 }
+
+const timerStop = () => {
+  return { type: TIMER_STOP };
+}
+
+export function handleGameLoaded() {
+    return dispatch => {
+        debugger;
+        clearInterval(timer);
+        timer = setInterval(() => {
+            dispatch(tick());
+            dispatch(timerStop());
+        }, 1000);
+        dispatch({ type: TIMER_START });
+        dispatch(tick())
+    }
+}
+
+export function handledNewGame() {
+    return dispatch => {
+         dispatch(newGame());
+         dispatch(handleGameLoaded());
+    }
+    
+}
+
+
