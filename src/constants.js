@@ -6,5 +6,8 @@ export const constants = {
 
     CARD_SHOWN : 10, 
     CARD_HIDDEN : 11, 
-    CARD_MATCHING : 12
+    CARD_MATCHING : 12,
+    CARD_HIDING : 13,
+
+    TOTAL_CARDS : 16
 }

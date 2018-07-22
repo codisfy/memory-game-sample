@@ -10,7 +10,7 @@ class Card extends Component {
 
     render () {
       
-        let {id, cardState, color, handleCardClicked, game, showing} = this.props;
+        let {id, cardState, color, handleCardClicked, showing} = this.props;
         let style = {
             width: "180px", 
             height: "180px", 
