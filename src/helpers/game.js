@@ -100,7 +100,7 @@ export const timerTick = (game) => {
 
 export const timerStop = (game) => {
   let gameTimer = game.timer
-  if (game.gameState === constants.GAME_LOST) {
+  if (game.gameState !== constants.GAME_STARTED) {
     clearInterval(timer);
     gameTimer = constants.TOTAL_TIME;
   }

@@ -12,14 +12,10 @@ class Card extends Component {
       
         let {id, cardState, color, handleCardClicked, showing} = this.props;
         let style = {
-            width: "180px", 
-            height: "180px", 
-            display: "inline-block",
-            margin: "2px",
             backgroundColor: showing ? color : 'gray',
         }
         return (
-            <div style={style} onClick={() => handleCardClicked({id, color, cardState})}>
+            <div className="card-container" style={style} onClick={() => handleCardClicked({id, color, cardState})}>
 
             </div>
         )

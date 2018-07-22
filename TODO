@@ -5,6 +5,8 @@ Memory Game:
   ✔ Add delay to card flip @done(18-07-22 10:26)
   ✔ fix the architecture of the app @started(18-07-22 09:10) @done(18-07-22 10:26) @lasted(1h16m41s)
   ✔ Add a timer @started(18-07-22 10:27) @done(18-07-22 11:43) @lasted(1h16m26s)
-  ☐ Add new Game to navbar @started(18-07-22 11:43)
+  ✔ Add new Game to navbar @started(18-07-22 11:43) @done(18-07-22 12:02) @lasted(19m26s)
+  ✔ Refactor game state initialization @started(18-07-22 12:02) @done(18-07-22 12:05) @lasted(3m11s)
+  ☐ improve css @started(18-07-22 12:05)
   Reducers are only for keeping track of state that they will be maniputlating the state. 
   Actions will define what should exactly happen. 

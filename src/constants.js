@@ -10,5 +10,5 @@ export const constants = {
     CARD_HIDING : 13,
 
     TOTAL_CARDS : 16,
-    TOTAL_TIME : 10
+    TOTAL_TIME : 60
 }
