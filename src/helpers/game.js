@@ -16,7 +16,7 @@ export const mapCardState = (cards, idsToChange, newCardState) => {
 
 export const cardClicked = (game, data) => {
 
-  if (data.cardState === constants.CARD_SHOWN || data.cardState === constants.CARD_MATCHING) {
+  if (game.noClick || data.cardState === constants.CARD_SHOWN || data.cardState === constants.CARD_MATCHING) {
       return game;
   }
   let cards = mapCardState(game.cards, [data.id], constants.CARD_SHOWN);
@@ -59,15 +59,18 @@ export const cardHiding = (game) => {
   let {cards} = game; 
   const showingCards = cards.filter((c) => c.cardState === constants.CARD_SHOWN);
   const ids = showingCards.map(c => c.id);
-
+  
+  let noClick = false
   if (showingCards.length === 2 &&
       showingCards[0].color !== showingCards[1].color) {
       cards = mapCardState(cards, ids, constants.CARD_HIDING);
+      noClick = true
   }
 
   return {
     ...game,
-    cards
+    cards, 
+    noClick
   }
 }
 
@@ -79,7 +82,8 @@ export const cardHidden = (game) => {
   
   return {
     ...game,
-    cards
+    cards,
+    noClick:false
   }
 }
 

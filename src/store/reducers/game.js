@@ -28,13 +28,15 @@ function shuffle(a) {
 const DEFAULT_STATE = {
     cards: shuffle(boardBoxes),
     gameState: constants.GAME_STARTED, 
-    timer: constants.TOTAL_TIME
+    timer: constants.TOTAL_TIME,
+    noClick : false
 };
 
 const game = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case NEW_GAME:
             return {
+                ...state,
                 cards: shuffle(boardBoxes), 
                 gameState: constants.GAME_STARTED,
                 timer: constants.TOTAL_TIME

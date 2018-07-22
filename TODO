@@ -7,6 +7,8 @@ Memory Game:
   ✔ Add a timer @started(18-07-22 10:27) @done(18-07-22 11:43) @lasted(1h16m26s)
   ✔ Add new Game to navbar @started(18-07-22 11:43) @done(18-07-22 12:02) @lasted(19m26s)
   ✔ Refactor game state initialization @started(18-07-22 12:02) @done(18-07-22 12:05) @lasted(3m11s)
-  ☐ improve css @started(18-07-22 12:05)
+  ✔ improve css @started(18-07-22 12:05) @done(18-07-22 12:13) @lasted(8m53s)
+  ✔ Implement noClick @done(18-07-22 12:26)
+  ☐ Find a better way to implement timer 
   Reducers are only for keeping track of state that they will be maniputlating the state. 
   Actions will define what should exactly happen. 

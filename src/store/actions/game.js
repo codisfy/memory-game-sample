@@ -54,7 +54,7 @@ export function handleCardClicked(data) {
         dispatch(cardHiding());
         setTimeout(() => {
             dispatch(cardHidden());
-        }, 500)
+        }, 1000)
     }
 }
 
@@ -64,7 +64,6 @@ const timerStop = () => {
 
 export function handleGameLoaded() {
     return dispatch => {
-        debugger;
         clearInterval(timer);
         timer = setInterval(() => {
             dispatch(tick());
