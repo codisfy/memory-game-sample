@@ -1,8 +1,8 @@
 import { CARD_FLIPPED, CARD_MATCHING, CARD_MATCHED, CARD_HIDDEN, 
     CARD_HIDING, NEW_GAME, GAME_LOST} from "../actionTypes";
 
-
-
+// keep track of timouts at max can be 2 
+let timeout = [];
 export function cardClicked(data) {
     return {
         type: CARD_FLIPPED,
@@ -53,14 +53,20 @@ export function gameLost() {
 
 export function handleCardClicked(data) {
     return dispatch => {
-
-        dispatch(cardClicked(data));
-        dispatch(cardMatching());
-        dispatch(cardMatched());
-        dispatch(cardHiding());
-        setTimeout(() => {
-            dispatch(cardHidden());
-        }, 1000)
+        if (timeout.indexOf(data.id) === -1 && timeout.length < 2) {
+            dispatch(cardClicked(data));
+            dispatch(cardMatching());
+            dispatch(cardMatched());
+            dispatch(cardHiding());
+            clearTimeout(timeout[0]);
+            timeout.push(setTimeout(() => {
+                dispatch(cardHidden());
+                if (timeout.length > 1) {
+                    timeout = [];
+                }
+            }, 1000))
+            
+        }
     }
 }
 

@@ -10,7 +10,7 @@ Memory Game:
   ✔ improve css @started(18-07-22 12:05) @done(18-07-22 12:13) @lasted(8m53s)
   ✔ Implement noClick @done(18-07-22 12:26)
   ✔ Find a better way to implement timer @started(18-07-23 08:18) @done(18-07-23 09:19) @lasted(1h1m27s)
-  ☐ There is a small issue with flipping sometimes it flips quickly - most probably because of set timeout being called on every click
+  ✔ There is a small issue with flipping sometimes it flips quickly - most probably because of set timeout being called on every click @done(18-07-23 10:01)
   ☐ Lose and won should have some better indication
   ☐ Timer should have some sound when it is near to completion. 
   ☐ There should be different levels for time, 30, 60 , 120

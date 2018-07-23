@@ -38,7 +38,8 @@ export const cardMatching = (game) => {
 
   return {
     ...game,
-    cards
+    cards, 
+    noClick: showingCards.length === 2
   }
 }
 
@@ -59,17 +60,14 @@ export const cardHiding = (game) => {
   const showingCards = cards.filter((c) => c.cardState === constants.CARD_SHOWN);
   const ids = showingCards.map(c => c.id);
   
-  let noClick = false
   if (showingCards.length === 2 &&
       showingCards[0].color !== showingCards[1].color) {
       cards = mapCardState(cards, ids, constants.CARD_HIDING);
-      noClick = true
   }
 
   return {
     ...game,
-    cards, 
-    noClick
+    cards
   }
 }
 
