@@ -1,5 +1,4 @@
 import { constants } from "../constants";
-import {timer} from "../store/actions/game";
 
 export const mapCardState = (cards, idsToChange, newCardState) => {
   return cards.map(c => {
@@ -87,31 +86,4 @@ export const cardHidden = (game) => {
   }
 }
 
-
-export const timerTick = (game) => {
-  let timer = game.timer - 1;
-  let gameState = game.gameState;
-  if (timer === 0) {
-      gameState = constants.GAME_LOST;
-  }
-  return {
-      ...game, 
-      gameState, 
-      timer
-  }
-       
-}
-
-export const timerStop = (game) => {
-  let gameTimer = game.timer
-  if (game.gameState !== constants.GAME_STARTED) {
-    clearInterval(timer);
-    gameTimer = constants.TOTAL_TIME;
-  }
-  return {
-      ...game, 
-      timer: gameTimer
-  }
-       
-}
 

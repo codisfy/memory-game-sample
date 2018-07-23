@@ -1,7 +1,7 @@
 import { NEW_GAME, GAME_WON, GAME_LOST, CARD_FLIPPED, CARD_MATCHED,
-     CARD_MATCHING, CARD_HIDDEN, CARD_HIDING, TIMER_START, TIMER_TICK, TIMER_STOP } from "../actionTypes";
+     CARD_MATCHING, CARD_HIDDEN, CARD_HIDING} from "../actionTypes";
 import { constants } from "../../constants";
-import { cardClicked, cardMatching, cardMatched, cardHiding, cardHidden, timerTick, timerStop } from "../../helpers/game"
+import { cardClicked, cardMatching, cardMatched, cardHiding, cardHidden} from "../../helpers/game"
 
 const colors = [
     'red', 'green', 'blue', 'black', 'yellow', 'pink', 'silver', 'orange'];
@@ -28,7 +28,6 @@ function shuffle(a) {
 const DEFAULT_STATE = {
     cards: shuffle(boardBoxes),
     gameState: constants.GAME_STARTED, 
-    timer: constants.TOTAL_TIME,
     noClick : false
 };
 
@@ -38,8 +37,7 @@ const game = (state = DEFAULT_STATE, action) => {
             return {
                 ...state,
                 cards: shuffle(boardBoxes), 
-                gameState: constants.GAME_STARTED,
-                timer: constants.TOTAL_TIME
+                gameState: constants.GAME_STARTED
             }
         case GAME_LOST:
              return {...state, gameState:constants.GAME_LOST}
@@ -55,12 +53,6 @@ const game = (state = DEFAULT_STATE, action) => {
              return cardHiding(state);
         case CARD_HIDDEN:
              return cardHidden(state);
-        case TIMER_START:
-             return state;
-        case TIMER_STOP:
-             return timerStop(state);
-        case TIMER_TICK:
-             return timerTick(state);
         default:
             return state;
     }

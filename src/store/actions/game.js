@@ -1,7 +1,7 @@
 import { CARD_FLIPPED, CARD_MATCHING, CARD_MATCHED, CARD_HIDDEN, 
-    CARD_HIDING, TIMER_TICK, TIMER_START, TIMER_STOP, NEW_GAME} from "../actionTypes";
+    CARD_HIDING, NEW_GAME, GAME_LOST} from "../actionTypes";
 
-export let timer = null;
+
 
 export function cardClicked(data) {
     return {
@@ -41,7 +41,13 @@ export function newGame() {
     }
 }
 
-export const tick = () => ({ type: TIMER_TICK });
+export function gameLost() {
+    return {
+        type: GAME_LOST
+    }
+}
+
+
 
 
 
@@ -58,28 +64,17 @@ export function handleCardClicked(data) {
     }
 }
 
-const timerStop = () => {
-  return { type: TIMER_STOP };
-}
-
-export function handleGameLoaded() {
-    return dispatch => {
-        clearInterval(timer);
-        timer = setInterval(() => {
-            dispatch(tick());
-            dispatch(timerStop());
-        }, 1000);
-        dispatch({ type: TIMER_START });
-        dispatch(tick())
-    }
-}
 
 export function handledNewGame() {
     return dispatch => {
          dispatch(newGame());
-         dispatch(handleGameLoaded());
     }
     
 }
 
 
+export function handleGameLost() {
+ return dispatch => {
+     dispatch(gameLost());
+ }
+}

@@ -9,6 +9,11 @@ Memory Game:
   ✔ Refactor game state initialization @started(18-07-22 12:02) @done(18-07-22 12:05) @lasted(3m11s)
   ✔ improve css @started(18-07-22 12:05) @done(18-07-22 12:13) @lasted(8m53s)
   ✔ Implement noClick @done(18-07-22 12:26)
-  ☐ Find a better way to implement timer 
+  ✔ Find a better way to implement timer @started(18-07-23 08:18) @done(18-07-23 09:19) @lasted(1h1m27s)
+  ☐ There is a small issue with flipping sometimes it flips quickly - most probably because of set timeout being called on every click
+  ☐ Lose and won should have some better indication
+  ☐ Timer should have some sound when it is near to completion. 
+  ☐ There should be different levels for time, 30, 60 , 120
+
   Reducers are only for keeping track of state that they will be maniputlating the state. 
   Actions will define what should exactly happen. 
