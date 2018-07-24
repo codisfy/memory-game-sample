@@ -76,3 +76,18 @@ header nav li:last-child {
   border-radius: 25px;
   display: inline-block;
 }
+
+h1.end-game {
+  width: 200px;
+  margin: auto;
+  padding: 160px;
+  text-align: center;
+}
+
+h1.end-game.win {
+  background-color: chartreuse;
+}
+
+h1.end-game.lose {
+  background-color: #f44336;
+}
